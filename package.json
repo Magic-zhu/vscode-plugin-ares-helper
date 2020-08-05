@@ -1,0 +1,63 @@
+{
+	"name": "vscode-plugin-ares-helper",
+	"displayName": "Ares helper",
+	"description": "Ares 脚手架的前端开发辅助工具",
+	"version": "0.0.1",
+	"publisher": "magic-rui",
+	"repository": "https://github.com/Magic-zhu/vscode-plugin-ares-helper.git",
+	"icon": "ares-helper.png",
+	"engines": {
+		"vscode": "^1.47.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:magic.createNewPage",
+		"onCommand:magic.createNewComponent"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "magic.createNewPage",
+				"title": "Ares-weapp:NewPage"
+			},
+			{
+				"command": "magic.createNewComponent",
+				"title": "Ares-weapp:NewComponent"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "magic.createNewPage",
+					"group": "navigation"
+				},
+				{
+					"command": "magic.createNewComponent",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.47.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	},
+	"dependencies": {
+		"stylus": "^0.54.8"
+	}
+}
