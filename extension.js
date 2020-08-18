@@ -7,14 +7,27 @@ const child = require('child_process');
  */
 function activate(context) {
 	let createNewPage = vscode.commands.registerCommand('magic.createNewPage', function (uri) {
-		vscode.window.showInformationMessage("当前文件夹的路径是" + uri.path);
+        let path = uri.path;
+        vscode.window.showInputBox({placeHolder:"请输入页面名称"})
+        .then(value=>{
+            path = path+'/'+value
+            vscode.window.showWarningMessage(`正在生成,请耐心等待`)
+            child.exec(`weapp create ${value} --vs --path ${path} `,err=>{
+                if (err) {
+                    console.log(err)
+                    vscode.window.showErrorMessage('错误发生')
+                } else {
+                    vscode.window.showInformationMessage(`已完成生成`)
+                }
+            })
+        })
 	});
 	let createNewComponent = vscode.commands.registerCommand('magic.createNewComponent', (uri) => {
 		let path = uri.path;
-		vscode.window.showInputBox("请输入名称")
+		vscode.window.showInputBox({placeHolder:"请输入组件名称"})
 			.then(value => {
 				vscode.window.showWarningMessage(`正在生成,请耐心等待`)
-				child.exec(`weapp create ${value} --path ${path}`, (err => {
+				child.exec(`weapp create ${value} -c --path ${path}`, (err => {
 					if (err) {
 						vscode.window.showErrorMessage('错误发生')
 					} else {

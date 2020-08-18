@@ -2,7 +2,7 @@
 	"name": "vscode-plugin-ares-helper",
 	"displayName": "Ares helper",
 	"description": "Ares 脚手架的前端开发辅助工具",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "magic-rui",
 	"repository": "https://github.com/Magic-zhu/vscode-plugin-ares-helper.git",
 	"icon": "ares-helper.png",
